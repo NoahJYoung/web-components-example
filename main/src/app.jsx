@@ -3,6 +3,7 @@ import '../../react-app/build/reactApp';
 import '../../header/build/Header';
 import '../../svelte-app/public/build/bundle';
 import '../../litcomponent/index.js';
+import '../../footer/build/Footer';
 
 import {
     BrowserRouter,
@@ -61,6 +62,7 @@ export const App = () => {
 
                 <Route path="/lit" element={<lit-component userData={user}></lit-component>} />
             </Routes>
+            <footer-app />
         </BrowserRouter>
     </div>
     );

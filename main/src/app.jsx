@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import '../../react-app/build/reactApp';
 import '../../header/build/Header';
 import '../../svelte-app/public/build/bundle';
+import '../../litcomponent/index.js';
 
 import {
     BrowserRouter,
@@ -48,6 +49,8 @@ export const App = () => {
                 <Link to='/svelte'>Svelte App</Link>
 
                 <Link to='/react'>React App</Link>
+
+                <Link to='/lit'>Lit Component</Link>
             </div>
             <Routes>
                 <Route path="/" element={<div style={centeredStyles}>{page1Message}</div>} />
@@ -55,6 +58,8 @@ export const App = () => {
                 <Route path="/svelte" element={<svelte-app userData={user}></svelte-app>} />
 
                 <Route path="/react" element={<react-app userData={user}></react-app>} />
+
+                <Route path="/lit" element={<lit-component userData={user}></lit-component>} />
             </Routes>
         </BrowserRouter>
     </div>

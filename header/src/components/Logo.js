@@ -1,24 +1,16 @@
 import React from 'react';
+import {createUseStyles} from 'react-jss';
+import {logoStyles} from './LogoStyles';
 
-const logoStyles = {
-    border: '1px solid #bbb',
-    borderRadius: '10px',
-    padding: '5px',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-evenly',
-    marginRight: '50px',
-    alignItems: 'center',
-    height: '130px',
-    width: '120px',
-};
+const useStyles = createUseStyles(logoStyles);
 
 export const Logo = () => {
+    const classes = useStyles();
     return (
-        <div style={logoStyles}>
-            <h2 style={{fontWeight: 100, margin: 0, padding: 0, marginLeft: '0px'}}>A</h2>
-            <h1 style={{fontWeight: 100, margin: 0, padding: 0, marginLeft: '20px'}}>Cool</h1>
-            <h3 style={{fontWeight: 100, margin: 0, padding: 0, marginRight: '20px'}}>Logo</h3>
+        <div className={classes.logo}>
+            <h2 className={classes.h2}>A</h2>
+            <h1 className={classes.h1}>Cool</h1>
+            <h3 className={classes.h3}>Logo</h3>
         </div>
     );
 };

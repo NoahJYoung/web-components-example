@@ -4,18 +4,10 @@ import {LoginPanel} from './components/LoginPanel';
 import {Logo} from './components/Logo';
 import {Observable} from 'windowed-observable';
 
+import {createUseStyles} from 'react-jss';
+import {appStyles} from './appStyles';
 
-const headerStyles = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    borderBottom: '1px solid #bbb',
-};
-
-const headerMessageStyles = {
-    fontWeight: '100',
-    textAlign: 'center',
-};
+const useStyles = createUseStyles(appStyles);
 
 const headerObservable = new Observable('header');
 
@@ -32,10 +24,13 @@ export const App = ({userData}) => {
             headerObservable.unsubscribe(handleMessageEvent);
         };  
     }, [handleMessageEvent]);
+
+    const classes = useStyles();
+
     return (
-        <div style={headerStyles}>
+        <div className={classes.header}>
             <Logo />
-            <h1 style={headerMessageStyles}>{headerMessage}</h1>
+            <h1 className={classes.headerMessage}>{headerMessage}</h1>
             <LoginPanel userData={userData} />
         </div>
     );

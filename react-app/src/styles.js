@@ -20,7 +20,7 @@ export const appStyles = {
         fontSize: '4rem',
         fontWeight: '100',
         fontFamily: 'inherit',
-        color: '#476af5',
+        color: '#0390fc',
         textTransform: 'uppercase',
         animationDuration: '1s',
         animationName: '$fadeIn',

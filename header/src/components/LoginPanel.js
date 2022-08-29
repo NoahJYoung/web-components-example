@@ -3,38 +3,12 @@
 /* eslint-disable react/prop-types */
 import React, {useEffect, useState} from 'react';
 import {Observable} from 'windowed-observable';
-
-
-const panelContainerStyles = {
-    fontFamily: 'inherit',
-    display: 'flex',
-    flexDirection: 'column',
-    padding: '5px',
-    justifyContent: 'space-evenly',
-    height: '150px',
-    width: '200px',
-};
-
-const loginFormStyles = {
-    display: 'flex',
-    padding: '5px',
-    flexDirection: 'column',
-    justifyContent: 'space-evenly',
-    height: '150px',
-    width: '200px',
-};
-
-const buttonStyles = {
-    fontFamily: 'inherit',
-    cursor: 'pointer',
-    color: 'white',
-    background: '#476af5',
-    border: 'none',
-    height: '25px',
-};
+import {createUseStyles} from 'react-jss';
+import {loginStyles} from './LoginPanelStyles';
 
 const observable = new Observable('user');
 
+const useStyles = createUseStyles(loginStyles);
 
 export const LoginPanel = ({userData}) => {
     const [user, setUser] = useState(userData);
@@ -62,26 +36,28 @@ export const LoginPanel = ({userData}) => {
         setUsername(event.target.value);
     };
 
+    const classes = useStyles();
+
     return user ? 
         (
-        <div style={panelContainerStyles}>
+        <div className={classes.panelContainer}>
             <h3 style={{margin: 0, padding: 0, fontWeight: '200'}}>Hello,</h3>
 
             <h2 style={{margin: 0, padding: 0, fontWeight: '400'}}>{user}</h2>
 
-            <button style={buttonStyles} onClick={handleLogout}>Log out</button>
+            <button className={classes.button} onClick={handleLogout}>Log out</button>
         </div>
     ) : (
-        <div style={loginFormStyles}>
-            <label style={{fontSize: '0.8rem'}}>Username</label>
+        <div className={classes.loginForm}>
+            <label className={classes.label}>Username</label>
 
-            <input style={{fontFamily: 'inherit'}} onChange={handleOnChange} type="text" placeholder="Enter your username" required />
+            <input className={classes.input} onChange={handleOnChange} type="text" placeholder="Enter your username" required />
 
-            <label style={{fontSize: '0.8rem'}}>Password</label>
+            <label className={classes.label}>Password</label>
 
-            <input style={{fontFamily: 'inherit'}} type="password" placeholder="Enter your password" required />
+            <input className={classes.input} type="password" placeholder="Enter your password" required />
 
-            <button onClick={() => handleLogin(username)} style={buttonStyles}>Log In</button>
+            <button onClick={() => handleLogin(username)} className={classes.button}>Log In</button>
         </div>
     );
 };

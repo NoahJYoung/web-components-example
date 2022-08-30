@@ -4,6 +4,9 @@ import '../../header/build/Header';
 import '../../svelte-app/public/build/bundle';
 import '../../litcomponent/index.js';
 import '../../footer/build/Footer';
+import '../../ant-design/build/ant-design';
+
+import '../../ant-design/build/main.css';
 
 import {
     BrowserRouter,
@@ -52,6 +55,8 @@ export const App = () => {
                 <Link to='/react'>React App</Link>
 
                 <Link to='/lit'>Lit Component</Link>
+
+                <Link to='/ant'>Ant-design</Link>
             </div>
             <Routes>
                 <Route path="/" element={<div style={centeredStyles}>{page1Message}</div>} />
@@ -61,6 +66,8 @@ export const App = () => {
                 <Route path="/react" element={<react-app userData={user}></react-app>} />
 
                 <Route path="/lit" element={<lit-component userData={user}></lit-component>} />
+
+                <Route path="/ant" element={<ant-design userData={user}></ant-design>} />
             </Routes>
             <footer-app />
         </BrowserRouter>
